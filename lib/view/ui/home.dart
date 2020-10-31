@@ -10,11 +10,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  AuthenticationBloc authenticationBloc;
+
+  @override
+  void dispose() {
+    authenticationBloc.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    // AuthenticationBloc authenticationBloc =
-    //     BlocProvider.of<AuthenticationBloc>(context);
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
@@ -24,7 +29,8 @@ class _HomeScreenState extends State<HomeScreen> {
             child: RaisedButton(
           child: Text('logout'),
           onPressed: () {
-            //authenticationBloc.add(LoggedOut());
+            //BlocProvider.of<AuthenticationBloc>(context);
+            BlocProvider.of<AuthenticationBloc>(context).add(LoggedOut());
           },
         )),
       ),

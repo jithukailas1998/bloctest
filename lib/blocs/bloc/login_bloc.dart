@@ -21,8 +21,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
     final storage = new FlutterSecureStorage();
-    // ignore: close_sinks
     AuthenticationBloc authenticationBloc;
+    @override
+    Future<void> close() async {
+      authenticationBloc.close();
+      super.close();
+    }
+
     if (event is LoginButtonPressed) {
       yield LoginLoading();
 
@@ -36,11 +41,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         String token = data[1];
         print("Toke $token");
         await storage.write(key: "token", value: token);
-        authenticationBloc.add(LoggedIn());
+        //authenticationBloc.add(LoggedIn());
 
-        //yield LoginInitial();
+        yield LoginSuccess();
       } catch (error) {
-        //yield LoginFailure(error: error.toString());
+        yield LoginFailure(error: error.toString());
       }
     }
   }

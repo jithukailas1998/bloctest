@@ -4,6 +4,7 @@ import 'package:bloc_test/blocs/event/authentication_event.dart';
 import 'package:bloc_test/blocs/event/login_event.dart';
 import 'package:bloc_test/blocs/state/login_state.dart';
 import 'package:bloc_test/data/repos/test_repo.dart';
+import 'package:bloc_test/view/ui/home.dart';
 import 'package:bloc_test/view/ui_loading/home_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -44,9 +45,12 @@ class _LoginPageState extends State<LoginPage> {
         if (state is LoginLoading) {
           return LoadingIndicator();
         }
-        // if (state is LoginFailure) {
-        //   print("In builder ${state.error}");
-        // }
+        if (state is LoginSuccess) {
+          return HomeScreen();
+        }
+        if (state is LoginFailure) {
+          print("In builder ${state.error}");
+        }
 
         return Text("Error");
       },

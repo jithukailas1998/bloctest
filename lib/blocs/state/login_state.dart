@@ -7,6 +7,11 @@ class LoginInitial extends LoginState {}
 
 class LoginLoading extends LoginState {}
 
+class LoginSuccess extends LoginState {
+  @override
+  String toString() => 'LoginSuccess';
+}
+
 class LoginFailure extends LoginState {
   final String error;
 

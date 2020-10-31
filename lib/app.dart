@@ -14,19 +14,10 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  AuthenticationBloc authenticationBloc;
-
-  @override
-  void initState() {
-    authenticationBloc = AuthenticationBloc();
-    authenticationBloc.add(AppStarted());
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => AuthenticationBloc(),
+      create: (context) => AuthenticationBloc()..add(AppStarted()),
       child: MaterialApp(
         home: BlocConsumer<AuthenticationBloc, dynamic>(
           listener: (context, state) {},
