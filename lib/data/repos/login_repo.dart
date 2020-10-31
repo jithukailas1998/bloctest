@@ -1,11 +1,12 @@
 import 'package:bloc_test/common/utils/apiString.dart';
-import 'package:bloc_test/data/models/test_model.dart';
+import 'package:bloc_test/data/models/token_model.dart';
+
 import 'package:flutter/material.dart';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-class UserRepository {
+class LoginRepository {
   Future<List> authenticate({
     @required String username,
     @required String password,

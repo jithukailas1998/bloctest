@@ -1,9 +1,8 @@
-import 'package:bloc_test/blocs/bloc/authentication_bloc.dart';
 import 'package:bloc_test/blocs/bloc/login_bloc.dart';
-import 'package:bloc_test/blocs/event/authentication_event.dart';
 import 'package:bloc_test/blocs/event/login_event.dart';
 import 'package:bloc_test/blocs/state/login_state.dart';
-import 'package:bloc_test/data/repos/test_repo.dart';
+import 'package:bloc_test/data/repos/login_repo.dart';
+
 import 'package:bloc_test/view/ui/home.dart';
 import 'package:bloc_test/view/ui_loading/home_loading.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,7 @@ class LoginScreen extends StatelessWidget {
           title: Text("Login"),
         ),
         body: BlocProvider(
-          create: (BuildContext context) => LoginBloc(repo: UserRepository()),
+          create: (BuildContext context) => LoginBloc(repo: LoginRepository()),
           child: LoginPage(),
         ),
       ),

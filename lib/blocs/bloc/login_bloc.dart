@@ -1,17 +1,15 @@
 import 'dart:async';
-
 import 'package:bloc_test/blocs/bloc/authentication_bloc.dart';
-import 'package:bloc_test/blocs/event/authentication_event.dart';
 import 'package:bloc_test/blocs/event/login_event.dart';
 import 'package:bloc_test/blocs/state/login_state.dart';
-import 'package:bloc_test/data/repos/test_repo.dart';
+import 'package:bloc_test/data/repos/login_repo.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:meta/meta.dart';
 import 'package:bloc/bloc.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   //final AuthenticationBloc authenticationBloc;
-  final UserRepository repo;
+  final LoginRepository repo;
 
   LoginBloc({
     @required this.repo,

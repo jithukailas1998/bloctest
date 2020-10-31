@@ -26,33 +26,11 @@ class AuthenticationBloc
       }
       yield AuthenticationAuthenticated();
     }
-    if (event is LoggedIn) {
-      yield AuthenticationLoading();
-      //await storage.write(key: "token", value: "gvh");
-      yield AuthenticationAuthenticated();
-    }
 
     if (event is LoggedOut) {
       yield AuthenticationLoading();
       await storage.delete(key: "token");
       yield AuthenticationUnauthenticated();
     }
-    // if (event is UploadData) {
-    //   yield TestapiLoading();
-    //   try {
-    //     List data = await repo.uploadData();
-    //     String statuscode = data[0];
-    //     print(statuscode);
-    //     if (statuscode == "201") {
-    //       UsersModel model = data[1];
-    //       yield TestapiLoaded(data: statuscode, data2: model);
-    //     } else if (statuscode == "NO Internet") {
-    //       yield TestapiError(errormsg: "No Internet");
-    //     }
-    //   } catch (e) {
-    //     print(e.toString());
-    //     yield TestapiError(errormsg: "Error");
-    //   }
-    // }
   }
 }

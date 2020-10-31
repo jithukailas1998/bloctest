@@ -8,11 +8,6 @@ class AppStarted extends AuthenticationEvent {
   String toString() => 'AppStarted';
 }
 
-class LoggedIn extends AuthenticationEvent {
-  @override
-  String toString() => 'LoggedIn';
-}
-
 class LoggedOut extends AuthenticationEvent {
   @override
   String toString() => 'LoggedOut';
